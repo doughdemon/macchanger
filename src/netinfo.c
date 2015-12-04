@@ -113,7 +113,7 @@ mc_net_info_get_permanent_mac (const net_info_t *net)
 	epa->size = IFHWADDRLEN;
 
 	memcpy(&req, &(net->dev), sizeof(struct ifreq));
-	req.ifr_data = (caddr_t)epa;
+	req.ifr_data = epa;
 
 	if (ioctl(net->sock, SIOCETHTOOL, &req) < 0) {
 		perror ("[ERROR] Could not read permanent MAC");
